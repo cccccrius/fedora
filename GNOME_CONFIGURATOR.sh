@@ -207,7 +207,9 @@ https://extensions.gnome.org/extension/4105/notification-banner-position/
 #https://extensions.gnome.org/extension/1202/nasa-apod/
 https://extensions.gnome.org/extension/1319/gsconnect/
 https://extensions.gnome.org/extension/6469/picture-of-the-day/
-https://extensions.gnome.org/extension/615/appindicator-support/ )
+https://extensions.gnome.org/extension/615/appindicator-support/
+https://extensions.gnome.org/extension/2/move-clock/
+https://extensions.gnome.org/extension/4944/app-icons-taskbar/ )
 
 for i in "${array[@]}"
 do
