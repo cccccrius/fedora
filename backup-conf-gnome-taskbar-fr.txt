@@ -178,66 +178,7 @@ command='/usr/bin/nautilus --new-window'
 name='Nautilus'
 
 [shell]
-disabled-extensions=['background-logo@fedorahosted.org', 'Move_Clock@rmy.pobox.com', 'dash-to-panel@jderose9.github.com']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'azwallpaper@azwallpaper.gitlab.com', 'arcmenu@arcmenu.com', 'ding@rastersoft.com', 'weatheroclock@CleoMenezesJr.github.io', 'Hide_Activities@shay.shayel.org', 'no-overview@fthx', 'caffeine@patapon.info', 'notification-position@drugo.dev', 'gsconnect@andyholmes.github.io', 'picture-of-the-day@swsnr.de', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'top-bar-organizer@julian.gse.jsts.xyz', 'status-area-horizontal-spacing@mathematical.coffee.gmail.com', 'windowIsReady_Remover@nunofarruca@gmail.com', 'show-desktop-button@amivaleo', 'aztaskbar@aztaskbar.gitlab.com']
 favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Calculator.desktop']
-
-[shell/extensions/arcmenu]
-arc-menu-icon=56
-custom-menu-button-icon-size=26.0
-default-menu-view-tognee='All_Programs'
-menu-button-icon='Menu_Icon'
-menu-layout='Tognee'
-position-in-panel='Center'
-prefs-visible-page=0
-search-entry-border-radius=(true, 25)
-update-notifier-project-version=66
-
-[shell/extensions/aztaskbar]
-clock-position-in-panel='RIGHT'
-icon-padding-horizontal=5
-indicator-location='BOTTOM'
-main-panel-height=(true, 40)
-notification-badges=true
-panel-location='BOTTOM'
-position-in-panel='CENTER'
-prefs-visible-page=''
-show-panel-activities-button=false
-update-notifier-project-version=30
-
-[shell/extensions/azwallpaper]
-bing-download-directory='/home/liveuser/Pictures/bing'
-bing-wallpaper-download-count=8
-prefs-visible-page=''
-slideshow-current-slide-index=0
-slideshow-directory='/home/liveuser/Pictures/bing'
-slideshow-queue=@aa{ss} []
-slideshow-slide-duration=(0, 0, 10)
-slideshow-time-of-slide-start=uint64 0
-slideshow-timer-remaining=10
-update-notifier-project-version=13
-
-[shell/extensions/caffeine]
-indicator-position-max=2
-
-[shell/extensions/dash-to-panel]
-extension-version=68
-panel-anchors='{}'
-panel-element-positions='{}'
-panel-lengths='{}'
-panel-positions='{}'
-panel-sizes='{}'
-prefs-opened=false
-primary-monitor='LGD-0x00000000'
-
-[shell/extensions/ding]
-check-x11wayland=true
-
-[shell/extensions/show-desktop-button]
-indicator-position='RIGHT_END'
-
-[shell/extensions/status-area-horizontal-spacing]
-hpadding=6
 
 [shell/weather]
 automatic-location=true
