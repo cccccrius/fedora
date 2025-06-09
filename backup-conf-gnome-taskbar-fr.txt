@@ -188,5 +188,5 @@ locations=[<(uint32 2, <('Marseille', 'LFML', true, [(0.75834555999153619, 0.091
 locations=@av []
 
 [software]
-download-updates=false
+download-updates=true
 show-only-free-apps=false
