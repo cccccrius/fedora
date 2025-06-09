@@ -192,7 +192,7 @@ fi
 
 
 #installation des extensions gnome
-array=( https://extensions.gnome.org/extension/6281/wallpaper-slideshow/
+array=( #https://extensions.gnome.org/extension/6281/wallpaper-slideshow/
 https://extensions.gnome.org/extension/3628/arcmenu/
 https://extensions.gnome.org/extension/2087/desktop-icons-ng-ding/
 https://extensions.gnome.org/extension/2935/control-blur-effect-on-lock-screen/
@@ -204,9 +204,10 @@ https://extensions.gnome.org/extension/2917/bring-out-submenu-of-power-offlogout
 https://extensions.gnome.org/extension/517/caffeine/
 https://extensions.gnome.org/extension/1160/dash-to-panel/
 https://extensions.gnome.org/extension/4105/notification-banner-position/
-https://extensions.gnome.org/extension/1202/nasa-apod/
+#https://extensions.gnome.org/extension/1202/nasa-apod/
 https://extensions.gnome.org/extension/1319/gsconnect/
-https://extensions.gnome.org/extension/6469/picture-of-the-day/ )
+https://extensions.gnome.org/extension/6469/picture-of-the-day/
+https://extensions.gnome.org/extension/615/appindicator-support/ )
 
 for i in "${array[@]}"
 do
@@ -224,13 +225,13 @@ done
 gnome-extensions list
 gnome-extensions disable dash-to-panel@jderose9.github.com
 
-array=( https://extensions.gnome.org/extension/307/dash-to-dock/
-https://extensions.gnome.org/extension/1194/show-desktop-button/
+array=( #https://extensions.gnome.org/extension/307/dash-to-dock/
+#https://extensions.gnome.org/extension/1194/show-desktop-button/
 https://extensions.gnome.org/extension/3088/extension-list
 https://extensions.gnome.org/extension/7/removable-drive-menu/
 https://extensions.gnome.org/extension/4356/top-bar-organizer/
 https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/
-https://extensions.gnome.org/extension/2/move-clock/ )
+#https://extensions.gnome.org/extension/2/move-clock/ )
 
 for i in "${array[@]}"
 do
