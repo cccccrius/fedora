@@ -283,3 +283,8 @@ select yn in "Marseille" "Grenoble" "Toulon" "Laval d'Aix" "Sortie"; do
 		"Sortie" ) break;;
 	esac
 done;
+
+#dconf dump /org/gnome/shell/extensions/ > dconf-extensions.txt
+#dconf load /org/gnome/shell/extensions/ < dconf-extensions.txt
+#dconf dump /org/gnome/ > backup-conf-gnome-fr.txt
+#dconf load /org/gnome/ < backup-conf-gnome-fr.txt
