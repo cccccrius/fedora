@@ -288,3 +288,7 @@ done;
 #dconf load /org/gnome/shell/extensions/ < dconf-extensions.txt
 #dconf dump /org/gnome/ > backup-conf-gnome-fr.txt
 #dconf load /org/gnome/ < backup-conf-gnome-fr.txt
+
+#cat gnome_conf | dconf load /org/gnome/
+#dconf load /org/gnome/ < gnome_conf
+
