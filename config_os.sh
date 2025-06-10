@@ -10,10 +10,35 @@ myloc=$(dirname "$(realpath $0)")
 MYDE=$(echo $XDG_CURRENT_DESKTOP)
 
 # on charge la conf gnome
+sudo dnf install -y wget curl
 wget -q --spider http://google.com
 if [ $? -eq 0 ]; then
     curl -LA "MyApp 1.0" "https://urls.fr/bViV6t" | dconf load /org/gnome/
 fi
+#dconf dump /org/gnome/shell/extensions/ > dconf-extensions.txt
+#dconf load /org/gnome/shell/extensions/ < dconf-extensions.txt
+#dconf dump /org/gnome/ > backup-conf-gnome-fr.txt
+dconf load /org/gnome/ < gnome-conf
+
+EXT_LIST=(
+Battery-Health-Charging@maniacx.github.com
+blur-my-shell@aunetx
+dash-to-dock@micxgx.gmail.com
+freon@UshakovVasilii_Github.yahoo.com
+)
+
+GN_CMD_OUTPUT=$(gnome-shell --version)
+GN_SHELL=${GN_CMD_OUTPUT:12:2}
+for i in "${EXT_LIST[@]}"
+do
+    VERSION_LIST_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=${i}" | jq '.extensions[] | select(.uuid=="'"${i}"'")') 
+    VERSION_TAG="$(echo "$VERSION_LIST_TAG" | jq '.shell_version_map |."'"${GN_SHELL}"'" | ."pk"')"
+    wget -O "${i}".zip "https://extensions.gnome.org/download-extension/${i}.shell-extension.zip?version_tag=$VERSION_TAG"
+    gnome-extensions install --force "${i}".zip
+    rm ${i}.zip
+done
+
+dconf load /org/gnome/shell/extensions/ < gnome-extensions
 
 WGETOPT='-q --show-progress'
 
