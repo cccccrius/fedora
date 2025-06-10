@@ -107,9 +107,16 @@ sudo dnf remove -y libreoffice* thunderbird* hexchat* pidgin*
 sudo dnf install -y https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
 sudo dnf install -y vlc-plugins-freeworld libavcodec-freeworld gnome-tweaks gparted keepassxc filezilla xournal fastfetch openssl p7zip-gui p7zip openssl gimp java-21-openjdk ffmpegthumbnailer nwipe hdparm onlyoffice-desktopeditors $DNFOPT
 myDEBInstallFunction "torakiki/pdfsam" "PDFSam" "pdfsam-basic"
+myRPMInstallFunction "balena-io/etcher" "Balena Etcher"
 
 #config flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+#install flatpak
+flatpak install -y flathub com.github.tchx84.Flatseal
+flatpak install -y flathub com.poweriso.PowerISO
+flatpak install -y flathub com.warlordsoftwares.media-downloader
+flatpak install -y flathub com.warlordsoftwares.youtube-downloader-4ktube
 
 # polices
 sudo mkdir -p "/tmp/fonts/"
@@ -203,3 +210,8 @@ fi
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 cd $myloc
 echo -e "[*] grub configuré\n"
+
+#config DNF
+cd $myloc && ./DNS/config_dns.sh
+echo -e "[*] dns configuré\n"
+
