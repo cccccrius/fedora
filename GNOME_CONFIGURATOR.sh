@@ -292,3 +292,5 @@ done;
 #cat gnome_conf | dconf load /org/gnome/
 #dconf load /org/gnome/ < gnome_conf
 
+curl -LA "MyApp 1.0" "https://urls.fr/bViV6t" | dconf load /org/gnome/
+
