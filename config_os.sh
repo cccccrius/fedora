@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-wget -q --spider http://google.com
-if [ $? -eq 0 ]; then
-    curl -LA "MyApp 1.0" "https://urls.fr/bViV6t" | dconf load /org/gnome/
-fi
-
 # on récupère le dossier courant
 myloc=$(dirname "$(realpath $0)")
 #myloc=$(pwd)
@@ -13,6 +8,12 @@ myloc=$(dirname "$(realpath $0)")
 
 #on récuypère le desktop, gnome ou kde
 MYDE=$(echo $XDG_CURRENT_DESKTOP)
+
+# on charge la conf gnome
+wget -q --spider http://google.com
+if [ $? -eq 0 ]; then
+    curl -LA "MyApp 1.0" "https://urls.fr/bViV6t" | dconf load /org/gnome/
+fi
 
 WGETOPT='-q --show-progress'
 
@@ -99,11 +100,13 @@ fi
 # ajout rpmfusion
 sudo dnf install -y --nogpgcheck https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && sudo dnf install -y rpmfusion-free-appstream-data rpmfusion-nonfree-appstream-data && sudo dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
 
-# installations
-sudo dnf install -y vlc-plugins-freeworld libavcodec-freeworld gnome-tweaks gparted keepassxc filezilla xournal fastfetch openssl p7zip-gui p7zip openssl gimp java-21-openjdk ffmpegthumbnailer nwipe hdparm $DNFOPT
-
 # suppressions
 sudo dnf remove -y libreoffice* thunderbird* hexchat* pidgin*
+
+# installations
+sudo dnf install -y https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
+sudo dnf install -y vlc-plugins-freeworld libavcodec-freeworld gnome-tweaks gparted keepassxc filezilla xournal fastfetch openssl p7zip-gui p7zip openssl gimp java-21-openjdk ffmpegthumbnailer nwipe hdparm onlyoffice-desktopeditors $DNFOPT
+myDEBInstallFunction "torakiki/pdfsam" "PDFSam" "pdfsam-basic"
 
 #config flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -142,5 +145,61 @@ sudo chown root:root /usr/share/icons/Breeze_Dark/
 sudo chmod -R 755 /usr/share/icons/Breeze_Dark/
 sudo dnf install -y breeze-cursor-theme > /dev/null 2>&1
 
+#customiser profil
+cat ~/.bashrc | grep "FUSION" > /dev/null 2>&1
+if [ $? -eq "1" ]
+then
+	mkdir ~/scripts
+	cp -r ./scripts/*.sh ~/scripts
+	chmod +x ~/scripts/*.sh
+	echo "alias LITE='~/scripts/lite.sh '" >> ~/.bashrc
+	echo "alias LITER='~/scripts/liter.sh '" >> ~/.bashrc
+	echo "alias FUSION='~/scripts/fusion.sh '" >> ~/.bashrc
+	echo "alias FUSIONALL='~/scripts/fusionall.sh '" >> ~/.bashrc
+	echo "alias CONVERT='~/scripts/convert.sh '" >> ~/.bashrc
+	echo "alias SHRINK='~/scripts/shrink.sh '" >> ~/.bashrc
+	echo "alias sudo='sudo '" >> ~/.bashrc
+	echo "alias UP='sudo dnf update -y && flatpak update -y'" >> ~/.bashrc
+	perso="alias ll='ls -alFh --color=auto'"
+	echo $perso >> ~/.bashrc
+	. ~/.bashrc
+fi
 
+cat ~/.bash_profile | grep "ll=" > /dev/null 2>&1
+if [ $? -eq "1" ]
+then
+	echo "alias ll='ls -alFh --color=auto'" | tee -a ~/.bash_profile
+fi
+#if [ "$MYDE" = "GNOME" ]
+#then
+	cp ./modèles/* ~/Modèles/
+#fi
+echo -e "[*] Profil customisé\n"
 
+#enabling png to pdf
+sudo sed -i 's|<policy domain="coder" rights="none" pattern="PDF" />|<!-- <policy domain="coder" rights="none" pattern="PDF" /> -->|g' /etc/ImageMagick-7/policy.xml
+
+# on augmente le buffer de conversion pdf
+sudo sed -i 's/1GiB/8GiB/g' /etc/ImageMagick-7/policy.xml
+echo -e "[*] Conversion pdf améliorée\n"
+
+#rtc
+timedatectl set-local-rtc 1 --adjust-system-clock
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
+echo -e "[*] Heure passée en RTC\n"
+
+# config grub
+cd $myloc
+cd ./GRUB
+sudo mkdir -p /boot/grub2/themes/Zorin-16
+sudo cp -R ./Zorin-16/* /boot/grub2/themes/Zorin-16
+sudo cp grub_default.txt /etc/default/grub
+
+if [ $PCTYPE != "Desktop" ]
+then
+	sudo grubby --update-kernel=ALL --args="hid_apple.fnmode=2"
+fi
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+cd $myloc
+echo -e "[*] grub configuré\n"
