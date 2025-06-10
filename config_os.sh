@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+wget -q --spider http://google.com
+if [ $? -eq 0 ]; then
+    curl -LA "MyApp 1.0" "https://urls.fr/bViV6t" | dconf load /org/gnome/
+fi
+
 # on récupère le dossier courant
 myloc=$(dirname "$(realpath $0)")
 #myloc=$(pwd)
