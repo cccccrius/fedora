@@ -146,6 +146,6 @@ sudo \rm /usr/share/applications/tech.shadow.drive.shadow-drive.desktop
 sudo \rm ~/.local/share/applications/tech.shadow.drive.shadow-drive.desktop
 sudo \rm $HOME/Bureau/tech.shadow.drive.shadow-drive.desktop
 sudo \rm $HOME/zappimages/ShadowDrive-Linux64.AppImage
-cp $myloc/APPIMAGES/ShadowDrive-Linux64.AppImage $HOME/zappimages
+wget -O $HOME/zappimages/ShadowDrive-Linux64.AppImage 'https://drive.shadow.tech/s/jg7WfDJJ9GYWNYn/download?path=%2F&files=ShadowDrive-Linux64.AppImage' $WGETOPT
 cd $myloc && cp ./APPIMAGES/shadow.drive.desktop ~/.local/share/applications
 cd $myloc && cp ./APPIMAGES/shadow.drive.desktop $HOME/Bureau
