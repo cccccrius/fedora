@@ -3,26 +3,204 @@
 
 sudo \rm /usr/lib64/firefox/defaults/pref/autoconfig.js 2> /dev/null
 sudo mkdir -p /usr/lib64/firefox/defaults/pref/ 2> /dev/null
-sudo tee /usr/lib64/firefox/defaults/pref/autoconfig.js >/dev/null <<'EOF'
-//
+echo '//
 pref("general.config.sandbox_enabled", false);
 pref("general.config.filename", "firefox.cfg");
-pref("general.config.obscure_value", 0);
-EOF
+pref("general.config.obscure_value", 0);' | sudo tee /usr/lib64/firefox/defaults/pref/autoconfig.js
 
 sudo \rm /usr/lib64/firefox/firefox.cfg 2> /dev/null
-sudo tee /usr/lib64/firefox/firefox.cfg >/dev/null <<'EOF'
-//the first line is always a comment
+echo '//the first line is always a comment
+pref("_user.js.parrot", "START: Oh yes, the Norwegian Blue... what's wrong with it?");
+pref("browser.aboutConfig.showWarning", false);
+pref("_user.js.parrot", "0100 syntax error: the parrot's dead!");
+pref("browser.startup.page", 0);
+pref("browser.newtabpage.enabled", false);
+pref("browser.newtabpage.activity-stream.showSponsored", false); // [FF58+] Sponsored stories
+pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // [FF83+] Sponsored shortcuts
+pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false); // [FF140+] Support Firefox
+pref("browser.newtabpage.activity-stream.default.sites", "");
+pref("_user.js.parrot", "0200 syntax error: the parrot's definitely deceased!");
+pref("geo.provider.ms-windows-location", false); // [WINDOWS]
+pref("geo.provider.use_corelocation", false); // [MAC]
+pref("geo.provider.use_geoclue", false); // [FF102+] [LINUX]
+pref("_user.js.parrot", "0300 syntax error: the parrot's not pinin' for the fjords!");
+pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
+pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+pref("browser.discovery.enabled", false);
+pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+pref("browser.newtabpage.activity-stream.telemetry", false);
+pref("app.shield.optoutstudies.enabled", false);
+pref("app.normandy.enabled", false);
+pref("app.normandy.api_url", "");
+pref("breakpad.reportURL", "");
+pref("browser.tabs.crashReporting.sendReport", false); // [FF44+]
+pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); // [DEFAULT: false]
+pref("captivedetect.canonicalURL", "");
+pref("network.captive-portal-service.enabled", false); // [FF52+]
+pref("network.connectivity-service.enabled", false);
+pref("_user.js.parrot", "0400 syntax error: the parrot's passed on!");
+pref("browser.safebrowsing.downloads.remote.enabled", false);
+pref("_user.js.parrot", "0600 syntax error: the parrot's no more!");
+pref("network.prefetch-next", false);
+pref("network.dns.disablePrefetch", true);
+pref("network.dns.disablePrefetchFromHTTPS", true);
+pref("network.predictor.enabled", false);
+pref("network.predictor.enable-prefetch", false); // [FF48+] [DEFAULT: false]
+pref("network.http.speculative-parallel-limit", 0);
+pref("browser.places.speculativeConnect.enabled", false);
+pref("_user.js.parrot", "0700 syntax error: the parrot's given up the ghost!");
+pref("network.proxy.socks_remote_dns", true);
+pref("network.file.disable_unc_paths", true); // [HIDDEN PREF]
+pref("network.gio.supported-protocols", ""); // [HIDDEN PREF] [DEFAULT: ""]
+pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
+pref("browser.urlbar.speculativeConnect.enabled", false);
+pref("browser.urlbar.quicksuggest.enabled", false); // [FF92+]
+pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false); // [FF95+]
+pref("browser.urlbar.suggest.quicksuggest.sponsored", false); // [FF92+]
+pref("browser.search.suggest.enabled", false);
+pref("browser.urlbar.suggest.searches", false);
+pref("browser.urlbar.trending.featureGate", false);
+pref("browser.urlbar.addons.featureGate", false); // [FF115+]
+pref("browser.urlbar.amp.featureGate", false); // [FF141+] adMarketplace
+pref("browser.urlbar.fakespot.featureGate", false); // [FF130+] [DEFAULT: false]
+pref("browser.urlbar.mdn.featureGate", false); // [FF117+]
+pref("browser.urlbar.weather.featureGate", false); // [FF108+]
+pref("browser.urlbar.wikipedia.featureGate", false); // [FF141+]
+pref("browser.urlbar.yelp.featureGate", false); // [FF124+]
+pref("browser.formfill.enable", false);
+pref("browser.search.separatePrivateDefault", true); // [FF70+]
+pref("browser.search.separatePrivateDefault.ui.enabled", true); // [FF71+]
+pref("_user.js.parrot", "0900 syntax error: the parrot's expired!");
+pref("signon.autofillForms", false);
+pref("signon.formlessCapture.enabled", false);
+pref("network.auth.subresource-http-auth-allow", 1);
+pref("_user.js.parrot", "1000 syntax error: the parrot's gone to meet 'is maker!");
+pref("browser.cache.disk.enable", false);
+pref("browser.privatebrowsing.forceMediaMemoryCache", true); // [FF75+]
+pref("media.memory_cache_max_size", 65536);
+pref("browser.sessionstore.privacy_level", 2);
+pref("toolkit.winRegisterApplicationRestart", false);
+pref("browser.shell.shortcutFavicons", false);
+pref("_user.js.parrot", "1200 syntax error: the parrot's a stiff!");
+pref("security.ssl.require_safe_negotiation", true);
+pref("security.tls.enable_0rtt_data", false);
+pref("security.OCSP.enabled", 1); // [DEFAULT: 1]
+pref("security.OCSP.require", true);
+pref("security.cert_pinning.enforcement_level", 2);
+pref("security.remote_settings.crlite_filters.enabled", true); // [DEFAULT: true FF137+]
+pref("security.pki.crlite_mode", 2);
+pref("dom.security.https_only_mode", true); // [FF76+]
+pref("dom.security.https_only_mode_send_http_background_request", false);
+pref("security.ssl.treat_unsafe_negotiation_as_broken", true);
+pref("browser.xul.error_pages.expert_bad_cert", true);
+pref("_user.js.parrot", "1600 syntax error: the parrot rests in peace!");
+pref("network.http.referer.XOriginTrimmingPolicy", 2);
+pref("_user.js.parrot", "1700 syntax error: the parrot's bit the dust!");
+pref("privacy.userContext.enabled", true);
+pref("privacy.userContext.ui.enabled", true);
+pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
+pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
+pref("media.peerconnection.ice.default_address_only", true);
+pref("_user.js.parrot", "2400 syntax error: the parrot's kicked the bucket!");
+pref("dom.disable_window_move_resize", true);
+pref("_user.js.parrot", "2600 syntax error: the parrot's run down the curtain!");
+pref("browser.download.start_downloads_in_tmp_dir", true); // [FF102+]
+pref("browser.helperApps.deleteTempFileOnExit", true);
+pref("browser.uitour.enabled", false);
+pref("devtools.debugger.remote-enabled", false); // [DEFAULT: false]
+pref("permissions.manager.defaultsUrl", "");
+pref("network.IDN_show_punycode", true);
+pref("pdfjs.disabled", false); // [DEFAULT: false]
+pref("pdfjs.enableScripting", false); // [FF86+]
+pref("browser.tabs.searchclipboardfor.middleclick", false); // [DEFAULT: false NON-LINUX]
+pref("browser.contentanalysis.enabled", false); // [FF121+] [DEFAULT: false]
+pref("browser.contentanalysis.default_result", 0); // [FF127+] [DEFAULT: 0]
+pref("security.csp.reporting.enabled", false);
+pref("browser.download.useDownloadDir", false);
+pref("browser.download.alwaysOpenPanel", false);
+pref("browser.download.manager.addToRecentDocs", false);
+pref("browser.download.always_ask_before_handling_new_types", true);
+pref("extensions.enabledScopes", 5); // [HIDDEN PREF]
+pref("extensions.postDownloadThirdPartyPrompt", false);
+pref("_user.js.parrot", "2700 syntax error: the parrot's joined the bleedin' choir invisible!");
+pref("browser.contentblocking.category", "strict"); // [HIDDEN PREF]
+pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
+//pref("privacy.sanitize.sanitizeOnShutdown", true);
+pref("privacy.clearOnShutdown_v2.cache", true); // [DEFAULT: true]
+pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", false); // [DEFAULT: true]
+pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", false); // [DEFAULT: true]
+pref("privacy.clearOnShutdown_v2.downloads", false); // [HIDDEN]
+pref("privacy.clearOnShutdown_v2.formdata", true);
+pref("privacy.clearOnShutdown_v2.cookiesAndStorage", true);
+pref("privacy.clearSiteData.cache", true);
+pref("privacy.clearSiteData.cookiesAndStorage", false); // keep false until it respects "allow" site exceptions
+pref("privacy.clearSiteData.historyFormDataAndDownloads", false);
+pref("privacy.clearSiteData.browsingHistoryAndDownloads", false);
+pref("privacy.clearSiteData.formdata", true);
+pref("privacy.clearHistory.cache", true); // [DEFAULT: true]
+pref("privacy.clearHistory.cookiesAndStorage", false);
+pref("privacy.clearHistory.historyFormDataAndDownloads", false); // [DEFAULT: true]
+pref("privacy.clearHistory.browsingHistoryAndDownloads", false); // [DEFAULT: true]
+pref("privacy.clearHistory.formdata", true);
+pref("privacy.sanitize.timeSpan", 0);
+pref("_user.js.parrot", "4000 syntax error: the parrot's bereft of life!");
+pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
+pref("privacy.window.maxInnerWidth", 1600);
+pref("privacy.window.maxInnerHeight", 900);
+pref("privacy.resistFingerprinting.block_mozAddonManager", true);
+pref("privacy.spoof_english", 1);
+pref("widget.non-native-theme.use-theme-accent", false); // [DEFAULT: false WINDOWS]
+pref("browser.link.open_newwindow", 3); // [DEFAULT: 3]
+pref("browser.link.open_newwindow.restriction", 0);
+pref("_user.js.parrot", "5000 syntax error: the parrot's taken 'is last bow");
+pref("_user.js.parrot", "5500 syntax error: this is an ex-parrot!");
+pref("_user.js.parrot", "6000 syntax error: the parrot's 'istory!");
+pref("extensions.blocklist.enabled", true); // [DEFAULT: true]
+pref("network.http.referer.spoofSource", false); // [DEFAULT: false]
+pref("security.dialog_enable_delay", 1000); // [DEFAULT: 1000]
+pref("privacy.firstparty.isolate", false); // [DEFAULT: false]
+pref("extensions.webcompat.enable_shims", true); // [HIDDEN PREF] [DEFAULT: true]
+pref("security.tls.version.enable-deprecated", false); // [DEFAULT: false]
+pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
+pref("extensions.quarantinedDomains.enabled", true); // [DEFAULT: true]
+pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
+pref("_user.js.parrot", "8000 syntax error: the parrot's crossed the Jordan");
+pref("_user.js.parrot", "8500 syntax error: the parrot's off the twig!");
+pref("datareporting.policy.dataSubmissionEnabled", false);
+pref("datareporting.healthreport.uploadEnabled", false);
+pref("toolkit.telemetry.unified", false);
+pref("toolkit.telemetry.enabled", false); // see [NOTE]
+pref("toolkit.telemetry.server", "data:,");
+pref("toolkit.telemetry.archive.enabled", false);
+pref("toolkit.telemetry.newProfilePing.enabled", false); // [FF55+]
+pref("toolkit.telemetry.shutdownPingSender.enabled", false); // [FF55+]
+pref("toolkit.telemetry.updatePing.enabled", false); // [FF56+]
+pref("toolkit.telemetry.bhrPing.enabled", false); // [FF57+] Background Hang Reporter
+pref("toolkit.telemetry.firstShutdownPing.enabled", false); // [FF57+]
+pref("toolkit.telemetry.coverage.opt-out", true); // [HIDDEN PREF]
+pref("toolkit.coverage.opt-out", true); // [FF64+] [HIDDEN PREF]
+pref("toolkit.coverage.endpoint.base", "");
+pref("_user.js.parrot", "9000 syntax error: the parrot's cashed in 'is chips!");
+pref("browser.startup.homepage_override.mstone", "ignore"); // [HIDDEN PREF]
+pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+pref("browser.urlbar.showSearchTerms.enabled", false);
+pref("_user.js.parrot", "9999 syntax error: the parrot's shuffled off 'is mortal coil!");
+pref("browser.shopping.experience2023.enabled", false); // [DEFAULT: false]
+pref("browser.urlbar.pocket.featureGate", false); // [FF116+] [DEFAULT: false]
+pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
+
+//mes prefs a moi
 pref("network.trr.mode", 3);
 pref("network.trr.uri", "https://dns.adguard.com/dns-query");
 pref("network.trr.custom_uri", "https://dns.adguard.com/dns-query");
-pref("network.trr.bootstrapAddress", "1.0.0.2");
+pref("network.trr.bootstrapAddress", "1.1.1.2");
 pref("network.trr.default_provider_uri", "https://dns.adguard.com/dns-query");
 pref("extensions.autoDisableScopes", 0);
 pref("browser.aboutConfig.showWarning", false);
-pref("browser.startup.homepage", "https://www.google.fr");
-pref("startup.homepage_welcome_url", "https://www.google.fr");
-pref("startup.homepage_override_url", "https://www.google.fr");
+pref("browser.startup.homepage", "https://www.startpage.com/do/mypage.pl?prfe=a38a7b198b39423a2a8410c58bc85195b17c2169dc598fd2f51859005cacef2f1f098194b8ecf7753acb5928c4e5f842512f7eba940b1ac5dbc5849b03d896ba05af3c344cee5f55718ec775030d");
+pref("startup.homepage_welcome_url", "https://www.startpage.com/do/mypage.pl?prfe=a38a7b198b39423a2a8410c58bc85195b17c2169dc598fd2f51859005cacef2f1f098194b8ecf7753acb5928c4e5f842512f7eba940b1ac5dbc5849b03d896ba05af3c344cee5f55718ec775030d");
+pref("startup.homepage_override_url", "https://www.startpage.com/do/mypage.pl?prfe=a38a7b198b39423a2a8410c58bc85195b17c2169dc598fd2f51859005cacef2f1f098194b8ecf7753acb5928c4e5f842512f7eba940b1ac5dbc5849b03d896ba05af3c344cee5f55718ec775030d");
 pref("browser.shell.checkDefaultBrowser", false);
 pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 pref("app.update.silent", true);
@@ -70,14 +248,12 @@ pref("browser.tabs.groups.smart.enabled", false);
 pref("browser.ml.chat.enabled", false);
 pref("browser.ml.chat.shortcuts", false);
 pref("browser.ml.chat.sidebar", false);
-pref("browser.ml.chat.page", false);
-EOF
+pref("browser.ml.chat.page", false);' | sudo tee /usr/lib64/firefox/firefox.cfg
 
 sudo \rm /usr/lib64/firefox/distribution/policies.json 2> /dev/null
 sudo mkdir -p /usr/lib64/firefox/distribution 2> /dev/null
 #about:memory -> measure
-sudo tee /usr/lib64/firefox/distribution/policies.json >/dev/null <<'EOF'
-{
+echo '{
   "policies": {
     "ExtensionSettings": {
       "uBlock0@raymondhill.net": {
@@ -162,5 +338,4 @@ sudo tee /usr/lib64/firefox/distribution/policies.json >/dev/null <<'EOF'
       }
     }
   }
-}
-EOF
+}' | sudo tee /usr/lib64/firefox/distribution/policies.json
